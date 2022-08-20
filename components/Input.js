@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useSession } from "next-auth/react";
 import {
   CalendarIcon,
   ChartBarIcon,
@@ -17,8 +18,10 @@ import {
   updateDoc,
 } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
+import Image from "next/image";
 
 function Input() {
+  const { data: session } = useSession();
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [showEmojis, setShowEmojis] = useState(false);
@@ -30,10 +33,10 @@ function Input() {
     setLoading(true);
 
     const docRef = await addDoc(collection(db, "posts"), {
-      // id: session.user.uid,
-      // username: session.user.name,
-      // userImg: session.user.image,
-      // tag: session.user.tag,
+      id: session.user.uid,
+      username: session.user.name,
+      userImg: session.user.image,
+      tag: session.user.tag,
       text: input,
       timestamp: serverTimestamp(),
     });
@@ -80,8 +83,14 @@ function Input() {
         loading && "opacity-60"
       }`}
     >
-      <div className="bg-purple-600 h-14 w-16 rounded-full xl:mr-3 text-center pt-4 font-bold">
-        f
+      <div className="mr-5">
+        <Image
+          src={session.user.image}
+          width={50}
+          height={50}
+          alt="logo"
+          className="h-10 w-10 rounded-full"
+        />
       </div>
       <div className="divide-y divide-gray-700 w-full">
         <div className={`${selectedFile && "pb-7"} ${input && "space-y-2.5"}`}>
@@ -142,6 +151,7 @@ function Input() {
                     marginLeft: -40,
                     maxWidth: "320px",
                     borderRadius: "20px",
+                    zIndex: "100",
                   }}
                   theme="dark"
                 />

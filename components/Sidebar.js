@@ -1,5 +1,5 @@
+import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
-import SidebarLink from "./SidebarLink";
 import { HomeIcon } from "@heroicons/react/solid";
 import {
   HashtagIcon,
@@ -11,8 +11,11 @@ import {
   DotsCircleHorizontalIcon,
   DotsHorizontalIcon,
 } from "@heroicons/react/outline";
+import SidebarLink from "./SidebarLink";
 
 function Sidebar() {
+  const { data: session } = useSession();
+
   return (
     <div className="hidden sm:flex flex-col items-center xl:items-start xl:w-[300px] 2xl:w-[350px] p-1 fixed h-full">
       <div className="flex items-center justify-center w-14 h-14 hoverAnimation p-1 xl:ml-12 2xl:ml-36">
@@ -37,13 +40,22 @@ function Sidebar() {
       <button className="hidden xl:inline ml-auto 2xl:mr-[-40px] bg-[#1d9bf0] text-white rounded-full 2xl:w-60 xl:w-60 h-[52px] text-lg font-bold shadow-md hover:bg-[#1a8cd8]">
         Twittear
       </button>
-      <div className="text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto mr-[-16px] 2xl:mr-[-50px] mt-auto mb-2">
-        <div className="bg-purple-600 h-10 w-10 rounded-full xl:mr-3 text-center pt-2 font-bold">
-          f
+      <div
+        className="text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto mr-[-16px] 2xl:mr-[-50px] mt-auto mb-2"
+        onClick={signOut}
+      >
+        <div className="mr-5">
+          <Image
+            src={session.user.image}
+            width={40}
+            height={40}
+            alt="logo"
+            className="h-10 w-10 rounded-full"
+          />
         </div>
         <div className="hidden xl:inline leading-5">
-          <h4 className="font-bold">Firebase 1988</h4>
-          <p className="text-[#6e767d]">@firebase1988</p>
+          <h4 className="font-bold">{session.user.name}</h4>
+          <p className="text-[#6e767d]">@{session.user.tag}</p>
         </div>
         <DotsHorizontalIcon className="h-5 hidden xl:inline ml-12" />
       </div>
