@@ -1,5 +1,14 @@
 import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import { getDownloadURL, ref, uploadString } from "@firebase/storage";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "@firebase/firestore";
 import {
   CalendarIcon,
   ChartBarIcon,
@@ -8,17 +17,8 @@ import {
   XIcon,
 } from "@heroicons/react/outline";
 import { Picker } from "emoji-mart";
-import "emoji-mart/css/emoji-mart.css";
 import { db, storage } from "../firebase";
-import {
-  addDoc,
-  collection,
-  doc,
-  serverTimestamp,
-  updateDoc,
-} from "@firebase/firestore";
-import { getDownloadURL, ref, uploadString } from "@firebase/storage";
-import Image from "next/image";
+import "emoji-mart/css/emoji-mart.css";
 
 function Input() {
   const { data: session } = useSession();

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { SparklesIcon } from "@heroicons/react/outline";
-import Input from "./Input";
-import { db } from "../firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import Post from "./Post";
+import { SparklesIcon } from "@heroicons/react/outline";
+import { Input, Post } from "./";
+import { db } from "../firebase";
 
 function Feed() {
   const { data: session } = useSession();

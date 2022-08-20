@@ -11,7 +11,7 @@ import {
   DotsCircleHorizontalIcon,
   DotsHorizontalIcon,
 } from "@heroicons/react/outline";
-import SidebarLink from "./SidebarLink";
+import { SidebarLink } from "./";
 
 function Sidebar() {
   const { data: session } = useSession();
@@ -45,12 +45,10 @@ function Sidebar() {
         onClick={signOut}
       >
         <div className="mr-5">
-          <Image
+          <img
             src={session.user.image}
-            width={40}
-            height={40}
-            alt="logo"
-            className="h-10 w-10 rounded-full"
+            alt=""
+            className="h-10 w-10 rounded-full xl:mr-2.5"
           />
         </div>
         <div className="hidden xl:inline leading-5">

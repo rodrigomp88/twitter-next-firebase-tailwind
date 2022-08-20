@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
-const Sidebar = () => {
+function Sidebar() {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -47,6 +47,6 @@ const Sidebar = () => {
     }
   };
   return <div> {renderThemeChanger()}</div>;
-};
+}
 
 export default Sidebar;

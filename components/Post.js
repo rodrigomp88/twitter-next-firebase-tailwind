@@ -26,7 +26,7 @@ import {
   ChatIcon as ChatIconFilled,
 } from "@heroicons/react/solid";
 import { db } from "../firebase";
-import { modalState, postIdState } from "../atoms/modelAtom";
+import { modalState, postIdState } from "../atoms/modalAtom";
 import "moment/locale/es";
 
 function Post({ id, post, postPage }) {
@@ -111,9 +111,10 @@ function Post({ id, post, postPage }) {
               >
                 @{post?.tag}
               </span>
+              .{" "}
             </div>
-            .{" "}
             <span className="hover:underline text-xs block">
+              -
               <Moment locale="es" fromNow>
                 {post?.timestamp?.toDate()}
               </Moment>
