@@ -114,7 +114,7 @@ function Post({ id, post, postPage }) {
               .{" "}
             </div>
             <span className="hover:underline text-xs block">
-              -
+              -{" "}
               <Moment locale="es" fromNow>
                 {post?.timestamp?.toDate()}
               </Moment>

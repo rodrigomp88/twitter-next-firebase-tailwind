@@ -25,7 +25,7 @@ function Comment({ id, comment }) {
             <span className="hover:underline block text-sm sm:text-[12px]">
               -<Moment fromNow>{comment?.timestamp?.toDate()}</Moment>
             </span>
-            <p className="text-[#d9d9d9] mt-0.5 max-w-lg overflow-scroll text-[15px] sm:text-base">
+            <p className="text-[#d9d9d9] mt-0.5 max-w-lg text-[15px] sm:text-base">
               {comment?.comment}
             </p>
           </div>
