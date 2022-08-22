@@ -133,7 +133,7 @@ function Modal() {
                         onChange={(e) => setComment(e.target.value)}
                         placeholder="Twittea tu respuesta"
                         rows="2"
-                        className="bg-transparent outline-none text-[#9d9d9d] text-lg placeholder-gray-500 tracking-wide w-full min-h-[80px]"
+                        className="bg-transparent outline-none text-[#9d9d9d] text-lg scrollbar-hide placeholder-gray-500 tracking-wide w-full min-h-[80px]"
                       />
                       <div className="flex items-center justify-between pt-2.5">
                         <div className="flex items-center">

@@ -3,7 +3,7 @@ import Head from "next/head";
 import { getProviders, getSession, useSession } from "next-auth/react";
 import { modalState } from "../atoms/modalAtom";
 import { useRecoilState } from "recoil";
-import { Comment, Login, Modal, Post, Sidebar } from "../components";
+import { Comment, Login, Modal, Post, Sidebar, Widgets } from "../components";
 import { ArrowLeftIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import {
@@ -51,11 +51,11 @@ function PostPage({ trendingResults, followResults, providers }) {
         <title>
           {post?.username} en Twitter: "{post?.text}"
         </title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/twitterLogo.png" />
       </Head>
-      <main className="bg-black min-h-screen flex max-w-[1500px] mx-auto">
+      <main className="bg-black min-h-screen flex max-w-screen mx-auto">
         <Sidebar />
-        <div className="flex-grow border-l border-r border-gray-700 max-w-2xl sm:ml-[73px] xl:ml-[370px]">
+        <div className="flex-grow border-l border-r border-gray-700 max-w-xl 2xl:max-w-[610px] sm:ml-[73px] xl:ml-[330px] 2xl:ml-[430px]">
           <div className="flex items-center px-1.5 py-2 border-b border-gray-700 text-[#d9d9d9] font-semibold text-xl gap-x-4 sticky top-0 z-50 backdrop-blur bg-black/80">
             <div
               className="hoverAnimation w-9 h-9 flex items-center justify-center xl:px-0"
@@ -79,10 +79,10 @@ function PostPage({ trendingResults, followResults, providers }) {
             </div>
           )}
         </div>
-        {/* <Widgets
+        <Widgets
           trendingResults={trendingResults}
           followResults={followResults}
-        /> */}
+        />
 
         {isOpen && <Modal />}
       </main>
