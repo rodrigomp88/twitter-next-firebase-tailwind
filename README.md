@@ -1,6 +1,6 @@
 # Twitter clone
 
-View onlie demo 👉 [Twitter](https://pinea-rodrigo.netlify.app/).
+View onlie demo 👉 [Twitter](https://twitter-two-blond.vercel.app/).
 
 ## Stack 
 
